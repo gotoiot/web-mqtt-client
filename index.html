@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="styles/lib/materialize.css" media="screen,projection" type="text/css" rel="stylesheet" />
+        <link href="styles/styles.css" media="screen,projection" type="text/css" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="img/favicon.ico" sizes="48x48" />
+        <title>Web Tool | Goto IoT</title>
+    </head>
+    <body>
+        <main>
+            <!-- NAVBAR -->
+            <nav>
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="#!" class="brand-logo left">Web Tool</a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li class="active"><a href="#" id="help_link" onclick="return View_ShowHelp();">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- MAIN APPLICATION VIEW/FIELDS/BUTTONS -->
+            <div class="container">
+                <div class="row row-view">
+                    <h5 class="title-view">Application settings</h5>
+                    <div class="col s12 m12 l10 xl10">
+                        <div class="input-field l10 m9 s9">
+                            <input placeholder="Your text" id="demo_text" type="text" class="validate">
+                            <label for="demo_text">Text field demo</label>
+                        </div>
+                    </div>
+                    <div class="col s5 m5 l2 xl2">
+                        <div class="l2 m3 s3">
+                            <button class="btn waves-effect waves-light button-view" onclick="App_ShowTextInLog();" name="mqtt_subscribe_button">Write</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- LOGS VIEW SECTION -->
+            <div class="container">
+                <div class="row row-view">
+                    <h5 class="title-view">Information & logs</h5>
+                    <div class="col s10 m10 l10 xl10">
+                        <div class="input-field">
+                            <textarea id="logs_textarea" class="materialize-textarea" onchange="View_AutoGrowLogArea(this);" readonly></textarea>
+                            <label for="logs_textarea"></label>
+                        </div>
+                    </div>
+                    <div class="col s1 m1 l1 x1">
+                        <div class="input-field">
+                            <input placeholder="10" id="log_lines" type="text">
+                            <label for="log_lines">Lines</label>
+                        </div>
+                    </div>
+                    <div class="col s1 m1 l1 x1">
+                        <div class="input-field">
+                            <label>
+                                <input type="checkbox" id="log_freeze" class="filled-in"/>
+                                <span>Freeze</span>
+                              </label>
+                        </div>
+                    </div>
+                    <div class="col s2 m2 l2 x2">
+                        <button class="btn waves-effect waves-light button-view" onclick="View_ClearLogData();" name="clear_log_button">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <!-- HELP -->
+            <div id="help_modal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                    <h5 class="title-view">Help</h5>
+                    <p>
+                        Help not available now! <br>
+                        For more information about this and related project, visit <a href="https://www.gototio.com">our site</a>.
+                    </p>
+                </div>
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row flex-row-footer">
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="left-align left flex-footer">
+                            Goto IoT - 2021 | Licence MIT
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="text-center center-align center">
+                            <a href="https://gotoiot.com" target="_blank"><img src="img/logo.png" class="img-fluid center-align center" width="60"></a>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4 xl4">
+                        <ul class="white-text right-align flex-footer--logos">
+                            <li><p style="padding-right: 10px;">Follow Goto IoT</p></li>
+                            <li><a href="https://www.gotoiot.com/" target="_blank"><img src="img/icon-site.svg" alt="Icon Site" class="logos-footer logo-hover"></a></li>
+                            <li><a href="https://github.com/gotoiot" target="_blank"><img src="img/icon-github.svg" alt="Icon Github" class="logos-footer"></a></li>
+                            <li><a href="https://twitter.com/gotoiot" target="_blank"><img src="img/icon-twitter.svg" alt="Icon Twitter"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FILE INCLUDEMENT -->
+        <script type="text/javascript" src="js/lib/materialize.min.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+    </body>
+</html>
