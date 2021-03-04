@@ -125,7 +125,7 @@ function Utils_GetLogTextPrefix(log_level){
             log_text += "[DEBUG]"
             break;
         default:
-            log_text += "[INFO]"
+            log_text += "[INFO ]"
     }
     log_text += " - "
     return log_text
