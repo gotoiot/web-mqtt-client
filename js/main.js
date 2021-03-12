@@ -102,32 +102,49 @@ function View_AdjustLogArea() {
 
 
 function View_IsLogFreeze(){
-    return document.getElementById("log_freeze").checked;
+    return document.getElementById("log_pause").checked;
+}
+
+
+function View_IsLogTimestampEnabled(){
+    return document.getElementById("log_timestamp").checked;
+}
+
+
+function View_IsLogLevelEnabled(){
+    return document.getElementById("log_level").checked;
 }
 
 
 function Utils_GetLogTextPrefix(log_level){
-    var now = new Date();
-    var log_text = (now.getHours() < 10? "0" + now.getHours(): now.getHours()) + ":";
-    log_text += (now.getMinutes() < 10? "0" + now.getMinutes(): now.getMinutes()) + ":";
-    log_text += (now.getSeconds() < 10? "0" + now.getSeconds(): now.getSeconds()) + " ";
-    switch (log_level) {
-        case LogLevel.ERROR:
-            log_text += "[ERROR]"
-            break;
-        case LogLevel.WARN:
-            log_text += "[WARN ]"
-            break;
-        case LogLevel.INFO:
-            log_text += "[INFO ]"
-            break;
-        case LogLevel.DEBUG:
-            log_text += "[DEBUG]"
-            break;
-        default:
-            log_text += "[INFO ]"
+    var log_text = "";
+    if (View_IsLogTimestampEnabled()){
+        var now = new Date();
+        log_text = (now.getHours() < 10? "0" + now.getHours(): now.getHours()) + ":";
+        log_text += (now.getMinutes() < 10? "0" + now.getMinutes(): now.getMinutes()) + ":";
+        log_text += (now.getSeconds() < 10? "0" + now.getSeconds(): now.getSeconds()) + " ";
     }
-    log_text += " - "
+    if (View_IsLogLevelEnabled()){
+        switch (log_level) {
+            case LogLevel.ERROR:
+                log_text += "[ERROR]";
+                break;
+            case LogLevel.WARN:
+                log_text += "[WARN ]";
+                break;
+            case LogLevel.INFO:
+                log_text += "[INFO ]";
+                break;
+            case LogLevel.DEBUG:
+                log_text += "[DEBUG]";
+                break;
+            default:
+                log_text += "[INFO ]";
+        }
+    }
+    if (log_text != ""){
+        log_text += " - ";
+    }
     return log_text
 }
 

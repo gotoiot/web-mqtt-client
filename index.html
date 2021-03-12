@@ -25,57 +25,69 @@
             <div class="container">
                 <div class="row row-view">
                     <h5 class="title-view">Connection settings</h5>
-                    <div class="col s12 m12 l4 xl4">
-                        <div class="input-field l5 m9 s9">
+                    <div class="col s12 m12 l3 xl3">
+                        <div class="input-field">
                             <input placeholder="localhost" id="mqtt_host" type="text" class="validate">
                             <label for="mqtt_host">MQTT host</label>
                         </div>
                     </div>
-                    <div class="col s12 m12 l2 xl2">
-                        <div class="input-field  l1 s3 m3">
+                    <div class="col s12 m12 l1 xl1">
+                        <div class="input-field">
                             <input placeholder="9001" id="mqtt_port" type="text" class="validate">
                             <label for="mqtt_port">Port</label>
                         </div>
                     </div>
-                    <div class="col s12 m12 l4 xl4">
-                        <div class="input-field l4 m9 s9">
+                    <div class="col s12 m12 l2 xl2">
+                        <div class="input-field">
                             <input placeholder="web-mqtt-client" id="mqtt_client" type="text" class="validate">
                             <label for="mqtt_client">MQTT client</label>
                         </div>
                     </div>
-                    <div class="col s5 m5 l2 xl2">
+                    <div class="col s12 m12 l2 xl2">
+                        <div class="input-field">
+                            <input placeholder="" id="mqtt_user" type="text" class="validate">
+                            <label for="mqtt_user">MQTT User</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l2 xl2">
+                        <div class="input-field">
+                            <input type="password" placeholder="********" id="mqtt_pass" type="text" class="validate">
+                            <label for="mqtt_pass">MQTT pass</label>
+                        </div>
+                    </div>
+                    <div class="col s4 m4 l2 xl2">
                         <button class="btn waves-effect waves-light button-view" onclick="App_ConnectToMqttBroker();"
                             name="mqtt_connect_button">Connect</button>
                     </div>
                 </div>
                 <div class="row row-view">
                     <div class="col s12 m12 l10 xl10">
-                        <div class="input-field l10 m9 s9">
+                        <div class="input-field">
                             <input placeholder="#" id="mqtt_topic_subscription" type="text" class="validate">
                             <label for="mqtt_topic_subscription">Topic to subscribe</label>
                         </div>
                     </div>
-                    <div class="col s5 m5 l2 xl2">
-                        <div class="l2 m3 s3">
+                    <div class="col s4 m4 l2 xl2">
+                        <div class="">
                             <button class="btn waves-effect waves-light button-view" onclick="App_SubscribeMqttTopic();" name="mqtt_subscribe_button">Subscribe</button>
                         </div>
                     </div>
                 </div>
                 <div class="row row-view">
                     <div class="col s12 m12 l5 xl5">
-                        <div class="input-field l4 m3 s3">
+                        <div class="input-field">
                             <input placeholder="status" id="mqtt_topic_publish" type="text" class="validate">
                             <label for="mqtt_topic_publish">Topic to publish</label>
                         </div>
                     </div>
                     <div class="col s12 m12 l5 xl5">
-                        <div class="input-field l6 m6 s6">
+                        <div class="input-field">
                             <input placeholder="{'status': 'running'}" id="mqtt_payload_publish" type="text" class="validate">
                             <label for="mqtt_payload_publish">Payload to publish</label>
                         </div>
                     </div>
-                    <div class="col s5 m5 l2 xl2">
-                        <div class="l2 m3 s3">
+                    <div class="col s4 m4 l2 xl2">
+                        <div class="">
                             <button class="btn waves-effect waves-light button-view" onclick="App_PublishMqttTopic();" name="mqtt_publish_button">Publish</button>
                         </div>
                     </div>
@@ -84,29 +96,47 @@
             <!-- LOGS VIEW SECTION -->
             <div class="container">
                 <div class="row row-view">
-                    <h5 class="title-view">Information & logs</h5>
-                    <div class="col s10 m10 l10 xl10">
-                        <div class="input-field">
-                            <textarea id="logs_textarea" class="materialize-textarea" onchange="View_AutoGrowLogArea(this);" readonly></textarea>
-                            <label for="logs_textarea"></label>
-                        </div>
+                    <div class="col s12 m12 l5 xl5">
+                        <h5 class="title-view">Information & logs</h5>
                     </div>
-                    <div class="col s1 m1 l1 x1">
+                    <div class="col s2 m2 l1 x1">
                         <div class="input-field">
                             <input placeholder="10" id="log_lines" type="text">
                             <label for="log_lines">Lines</label>
                         </div>
                     </div>
-                    <div class="col s1 m1 l1 x1">
+                    <div class="col s2 m2 l1 x1">
                         <div class="input-field">
                             <label>
-                                <input type="checkbox" id="log_freeze" class="filled-in"/>
-                                <span>Freeze</span>
+                                <input type="checkbox" id="log_timestamp" class="filled-in" checked/>
+                                <span>Time</span>
+                              </label>
+                        </div>
+                    </div>
+                    <div class="col s2 m2 l1 x1">
+                        <div class="input-field">
+                            <label>
+                                <input type="checkbox" id="log_level" class="filled-in" checked/>
+                                <span>Level</span>
                               </label>
                         </div>
                     </div>
                     <div class="col s2 m2 l2 x2">
-                        <button class="btn waves-effect waves-light button-view" onclick="View_ClearLogData();" name="clear_log_button">Clear</button>
+                        <div class="input-field">
+                            <label>
+                                <input type="checkbox" id="log_pause" class="filled-in"/>
+                                <span>Pause</span>
+                              </label>
+                        </div>
+                    </div>
+                    <div class="col s4 m4 l2 x2">
+                        <button class="btn waves-effect waves-light button-view" onclick="View_ClearLogData();" name="clear_log_button">Clear log</button>
+                    </div>
+                    <div class="col s12 m12 l12 xl12">
+                        <div class="input-field">
+                            <textarea id="logs_textarea" class="materialize-textarea" onchange="View_AutoGrowLogArea(this);" style="background-color:#EEEEEE;" readonly></textarea>
+                            <label for="logs_textarea"></label>
+                        </div>
                     </div>
                 </div>
             </div>

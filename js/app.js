@@ -27,6 +27,8 @@ const DEFAULT_MQTT_HOST       = "localhost";
 const DEFAULT_MQTT_PORT       = 9001;
 const DEFAULT_MQTT_PATH       = "/mqtt";
 const DEFAULT_MQTT_CLIENT     = "web-mqtt-client-" + parseInt(Math.random() * 100, 10);
+const DEFAULT_MQTT_USER       = "";
+const DEFAULT_MQTT_PASS       = "";
 const DEFAULT_MQTT_TOPIC_SUB  = "#";
 const DEFAULT_MQTT_TOPIC_PUB  = "status";
 const DEFAULT_MQTT_PAYLOAD    = "{'status': 'running'}";
@@ -35,12 +37,8 @@ const MQTT_TIMEOUT            = 3;
 const MQTT_TLS_FLAG           = false
 const MQTT_CLEAN_SESSION_FLAG = true;
 const MQTT_RECONNECT_TIMEOUT  = 2000;
-const MQTT_USERNAME           = null;
-const MQTT_PASSWOD            = null;
-
 // The object where Paho MQTT instance is
 var MqttClientObj;
-
 
 //=======[ MQTT Management ]===================================================
 
@@ -122,15 +120,20 @@ function App_ConnectToMqttBroker(){
     if (Utils_IsInvalidValue(mqttClient)){
         mqttClient = DEFAULT_MQTT_CLIENT;
     }
+    let mqttUser = Utils_GetElementValue("mqtt_user"); 
+    if (Utils_IsInvalidValue(mqttUser)){
+        mqttUser = DEFAULT_MQTT_USER;
+    }
+    let mqttPass = Utils_GetElementValue("mqtt_pass"); 
+    if (Utils_IsInvalidValue(mqttPass)){
+        mqttPass = DEFAULT_MQTT_PASS;
+    }
     // Show current settings
     Mqtt_LogSettings(mqttHost, mqttPort, mqttClient);
     // connection option settings
     let timeout      = MQTT_TIMEOUT;
     let useTLS       = MQTT_TLS_FLAG;
     let cleanSession = MQTT_CLEAN_SESSION_FLAG;
-    // authentication settings
-    let username     = MQTT_USERNAME;
-    let password     = MQTT_PASSWOD;
     // Create the client object from user settings
     MqttClientObj = new Paho.MQTT.Client(mqttHost, mqttPort, mqttClient);
     // Set connection config options
@@ -142,9 +145,9 @@ function App_ConnectToMqttBroker(){
         onFailure    : Mqtt_OnFailure
     };
     // Add authentication option if needed
-    if (username != null) {
-        mqttOptions.userName = username;
-        mqttOptions.password = password;
+    if ((mqttUser != null || mqttUser != "") && (mqttPass != null || mqttPass != "")){
+        mqttOptions.userName = mqttUser;
+        mqttOptions.password = mqttPass;
     }
     // Set event callbacks
     MqttClientObj.onConnectionLost = Mqtt_OnConnectionLost;
