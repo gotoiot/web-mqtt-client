@@ -130,16 +130,16 @@ function Utils_GetLogTextPrefix(log_level){
                 log_text += "[ERROR]";
                 break;
             case LogLevel.WARN:
-                log_text += "[WARN ]";
+                log_text += "[WARN]";
                 break;
             case LogLevel.INFO:
-                log_text += "[INFO ]";
+                log_text += "[INFO]";
                 break;
             case LogLevel.DEBUG:
                 log_text += "[DEBUG]";
                 break;
             default:
-                log_text += "[INFO ]";
+                log_text += "[INFO]";
         }
     }
     if (log_text != ""){

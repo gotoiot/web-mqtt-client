@@ -13,53 +13,59 @@
 
 ## Introducción
 
-> Si todavía no conoces como está estructurada la plataforma Goto IoT es recomendable que leas la [información contextual](https://github.com/gotoiot/doc/wiki#informaci%C3%B3n-contextual) de nuestra wiki, que te puede ser de utilidad.
+Este proyecto es una aplicación web que se comunica con un broker MQTT através de WebSockets. Funciona como un cliente donde se pueden publicar y suscribirse a topics y visualizar los mensajes en tiempo real.
 
-Este proyecto es una Single Page Application (SPA) que se comunica con un broker MQTT através de WebSockets y actúa como una terminal, donde se pueden enviar topics, suscribirse y visualizar los mensajes. 
-
-Funciona en cualquier navegador actual y está implementado utilizando código JavaScript, HTML y CSS. Para la parte de estilos se utiliza [Material Design](). La conexión MQTT se implementa utilizando la biblioteca [Paho MQTT de Eclipse Fundation]().
+Corre cualquier navegador actual y está desarrollado en JS, HTML y CSS. Los estilos son de `Material Design` y la conexión MQTT con `Paho MQTT`.
 
 ## Instalar dependencias
 
-Para correr este proyecto únicamente es necesario un navegador actual, aunque se recomienda que el contenido sea accedido a través de un servidor web. Se puede implementar cualquier servidor de preferencia, aunque si se utiliza Visual Studio Code la extensión [Live Server](https://github.com/ritwickdey/vscode-live-server.git) es un servidor web integrado extremadamente fácil de utilizar.
+Para correr este proyecto solo necesitas un navegador moderno, aunque es preferible que lo accedas desde un servidor web. Cualquier servidor es válido, aunque si usas VS Code podes instalar la extensión [Live Server](https://github.com/ritwickdey/vscode-live-server.git) que es un servidor web para desarrollo muy fácil y práctico de utilizar. 
 
-Así mismo será necesario contar con un broker MQTT corriendo para realizar las pruebas. En la [sección de proyectos de la web](https://www.gotoiot.com/pages/projects) o bien dentro de los [repositorios de Goto IoT](https://github.com/gotoiot?q=mqtt) se puede encontrar información al respecto.
+También va a ser necesario que tengas un broker MQTT al cual conectarte. Si no sabes cómo hacerlo, podes mirar nuestra aplicación [App MQTT Connection](https://github.com/gotoiot/app-mqtt-connection) que te mostramos como levantar un broker junto con esta App usando Docker. 
+
+> Tener el broker no es estrictamente necesario, ya que podes ejecutar la abrir esta app sin conectarte por MQTT, pero carecería de sentido.
 
 ## Descargar el código
 
-Desde la esquina superior derecha en [la home de este repositorio](https://github.com/gotoiot/web-mqtt-client) realizar un `fork` a la cuenta personal. Una vez realizado el fork descargar el código con el siguiente comando (poner el usuario de github en la URL):
+Para descargar el código, lo más conveniente es que realices un `fork` de este proyecto a tu cuenta personal haciendo click en [este link](https://github.com/gotoiot/web-mqtt-client/fork). Una vez que ya tengas el fork a tu cuenta, descargalo con este comando (acordate de poner tu usuario en el link):
 
 ```
-git clone https://github.com/USER/web-mqtt-client.git
+git clone https://github.com/TU_USUARIO/web-mqtt-client.git
 ```
 
-> En caso de no poseer una cuenta de Github se puede realizar un `clone` directo de este repositorio.
+Abrí la carpeta del proyecto desde VS Code cuando descargues el código.
 
-Abrir la carpeta del proyecto desde VS Code luego de la descarga.
+> En caso que no tengas una cuenta en Github podes clonar directamente este repo.
 
 ## Ejecutar la aplicación
 
-Como primer paso será necesario abrir la aplicación accediendo al servidor web local. Si se instaló Live Server en VSCode hacer click derecho sobre el archivo index.html y seleccionar la opción `Open with Live Server` dentro del menú contextual. Esto abrirá automáticamente la aplicación en el navegador.
+El primer paso es acceder a la app desde el navegador. Si instalaste `Live Server` en VS Code hace click derecho sobre el archivo `index.html` y seleccioná la opción `Open with Live Server` que abrirá automáticamente la aplicación en el navegador. 
 
-> De manera opcional se puede acceder a la aplicación mediante `file://PATH_TO_PROJECT/index.html`.
+Si estas usando otro servidor web accedé a la URL correspondiente; y de manera opcional podés poner el path del archivo desde la barra de búsqueda del navegador (ej: `file://PATH_TO_PROJECT/index.html`).
 
-Para testear que la comunicación con el broker funcione correctamente, dentro de la aplicación realizar las siguientes configuraciones:
+Una vez que accedas a la app tenes que configurar los campos para conectarte al broker. Muchos de los campos tienen valores precargados para no tener que escribirlos cada vez. Los únicos que no tienen datos cargados son los de usuario y contraseña. 
 
-1. Configurar la IP y el puerto del host MQTT  y un nombre de cliente en los campos `MQTT host`, `MQTT port` y `MQTT Client` y presionar el botón `CONNECT`.
-2. Configurar un `Topic to subscribe` y presionar el boton `SUBSCRIBE` para recibir mensajes desde el broker (por defecto todos los topics '#').
-3. Configurar un topic y un payload en los campos `Topic to publish` y `Payload to publish` y presionar el botón `PUBLISH` para enviar el topic al broker. 
+Si los datos por defecto te sirven, comenzá presionando `CONNECT` y después `SUBSCRIBE` para suscribirte a todos los topics (`#`). Fijate que en la sección de logs aparecen las acciones que vas realizando. Después una vez que te suscribas a todos los topics presioná el botón `PUBLISH`. Esto va a producir un `echo` del mensaje enviado, y es debido a que estás suscripto a todos los topics.
 
-Como el cliente ya se encuentra suscripto a todos los topics, en la sección `Logs` aparecerá el topic publicado a modo de `echo`.
+Para hacer una prueba más completa podés abrir en otra pestaña una nueva instancia de esta app, entonces desde una te suscribis a topics y desde la otra publicas, así podes ver la comunicación entre dos clientes utilizando el broker. Y si querés probar algo más completo aún, podes correr un cliente MQTT embebido para controlarlo desde el navegador con esta aplicación. En la [App MQTT Connection](https://github.com/gotoiot/app-mqtt-connection) también hay info sobre cómo levantar un cliente MQTT embebido.
 
-En la siguiente figura hay una demostración de las configuraciones necesarias.
+Si querés saber cómo se ve la App sin ejecutarla, en esta imagen te mostramos cómo se cargan los datos para comunicarte con el broker para hacer el echo.
 
-![web-mqtt-client-running](doc/mqtt-web-client-running.png)
+![web-mqtt-client-fields-filled](doc/web-mqtt-client-fields-filled.png)
+
+Y en esta otra imagen cómo se van visualizando los logs.
+
+![web-mqtt-client-logs](doc/web-mqtt-client-logs.png)
+
+Para las configuraciones de los logs podes setar el numero de líneas que se muestran con el campo `Lines`. El check `Time` imprime la hora mientras que el check `Level` imprime el nivel de loggeo. Si querés pausar la actualización de mensajes en el log chequeá el campo `Pause`. Por último, si querés borrar los mensajes presioná `CLEAR LOG`.
 
 ## Colaborar
 
-Las mejoras son bienvenidas. Para ello es necesario hacer un fork de este proyecto, aplicar las mejoras y enviarlas mediante un pull request. Luego de la revisión, podrán ser incluídas.
+¿Te gustó el proyecto? Si es así no dudes en apoyarlo con una estrella en Github desde [la home del proyecto](https://github.com/gotoiot/web-mqtt-client), esto motiva mucho a seguir adelante con el desarrollo de código para la comunidad. Si estás interesado en recibir novedades cuando se hagan actualizaciones, podes suscribirte desde [este link](https://github.com/gotoiot/web-mqtt-client/subscription).
 
-Si te gustó el proyecto no dudes en apoyarlo con una `Star`, y si estás interesado en recibir novedades podés aplicar un `Watch`. Estas acciones ayudan a fomentar la participación y creación de nuevos proyectos dentro de [Goto IoT](https://github.com/gotoiot/).
+Si te gustaría aplicar mejoras a este proyecto podes abrir un hilo de discusión en [este link](https://github.com/gotoiot/web-mqtt-client/issues/new) para conversarlas y luego podrías enviarlas mediante un `pull request`. 
+
+Finalmente podés compartir este proyecto para que más personas puedan utilizarlo y beneficiarse de esta gran comunidad del software libre.
 
 ## Licencia
 
