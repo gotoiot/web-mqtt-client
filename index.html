@@ -14,7 +14,7 @@
             <nav>
                 <div class="container">
                     <div class="nav-wrapper">
-                        <a href="#!" class="brand-logo left">Web Tools</a>
+                        <a href="#!" class="brand-logo left">Web App</a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li class="active"><a href="#" id="help_link" onclick="return View_ShowHelp();">Help</a></li>
                         </ul>
@@ -41,29 +41,47 @@
             <!-- LOGS VIEW SECTION -->
             <div class="container">
                 <div class="row row-view">
-                    <h5 class="title-view">Information & logs</h5>
-                    <div class="col s10 m10 l10 xl10">
-                        <div class="input-field">
-                            <textarea id="logs_textarea" class="materialize-textarea" onchange="View_AutoGrowLogArea(this);" readonly></textarea>
-                            <label for="logs_textarea"></label>
-                        </div>
+                    <div class="col s12 m12 l5 xl5">
+                        <h5 class="title-view">Information & logs</h5>
                     </div>
-                    <div class="col s1 m1 l1 x1">
+                    <div class="col s2 m2 l1 x1">
                         <div class="input-field">
                             <input placeholder="10" id="log_lines" type="text">
                             <label for="log_lines">Lines</label>
                         </div>
                     </div>
-                    <div class="col s1 m1 l1 x1">
+                    <div class="col s2 m2 l1 x1">
                         <div class="input-field">
                             <label>
-                                <input type="checkbox" id="log_freeze" class="filled-in"/>
-                                <span>Freeze</span>
+                                <input type="checkbox" id="log_timestamp" class="filled-in" checked/>
+                                <span>Time</span>
+                              </label>
+                        </div>
+                    </div>
+                    <div class="col s2 m2 l1 x1">
+                        <div class="input-field">
+                            <label>
+                                <input type="checkbox" id="log_level" class="filled-in" checked/>
+                                <span>Level</span>
                               </label>
                         </div>
                     </div>
                     <div class="col s2 m2 l2 x2">
-                        <button class="btn waves-effect waves-light button-view" onclick="View_ClearLogData();" name="clear_log_button">Clear</button>
+                        <div class="input-field">
+                            <label>
+                                <input type="checkbox" id="log_pause" class="filled-in"/>
+                                <span>Pause</span>
+                              </label>
+                        </div>
+                    </div>
+                    <div class="col s4 m4 l2 x2">
+                        <button class="btn waves-effect waves-light button-view" onclick="View_ClearLogData();" name="clear_log_button">Clear log</button>
+                    </div>
+                    <div class="col s12 m12 l12 xl12">
+                        <div class="input-field">
+                            <textarea id="logs_textarea" class="materialize-textarea" onchange="View_AutoGrowLogArea(this);" style="background-color:#EEEEEE;" readonly></textarea>
+                            <label for="logs_textarea"></label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,7 +92,7 @@
                     <h5 class="title-view">Help</h5>
                     <p>
                         Help not available now! <br>
-                        For more information about this and related project, visit <a href="https://www.gototio.com">our site</a>.
+                        For more information about this and related project, visit <a href="https://www.gotoiot.com">our site</a> or our <a href="https://github.com/gotoiot">Github Organization</a>.
                     </p>
                 </div>
             </div>
