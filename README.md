@@ -15,22 +15,22 @@
 
 Este proyecto es una aplicación web que se comunica con un broker MQTT através de WebSockets. Funciona como un cliente donde se pueden publicar y suscribirse a topics y visualizar los mensajes en tiempo real.
 
-Corre cualquier navegador actual y está desarrollado en JS, HTML y CSS. Los estilos son de `Material Design` y la conexión MQTT con `Paho MQTT`.
+Corre sobre cualquier navegador actual y está desarrollado en JS, HTML y CSS. Los estilos son de `Material Design` y la conexión MQTT con `Paho MQTT`.
 
 ## Instalar dependencias
 
 Para correr este proyecto solo necesitas un navegador moderno, aunque es preferible que lo accedas desde un servidor web. Cualquier servidor es válido, aunque si usas VS Code podes instalar la extensión [Live Server](https://github.com/ritwickdey/vscode-live-server.git) que es un servidor web para desarrollo muy fácil y práctico de utilizar. 
 
-También va a ser necesario que tengas un broker MQTT al cual conectarte. Si no sabes cómo hacerlo, podes mirar nuestra aplicación [App MQTT Connection](https://github.com/gotoiot/app-mqtt-connection) que te mostramos como levantar un broker junto con esta App usando Docker. 
+También va a ser necesario que tengas un broker MQTT al cual conectarte. Si no sabes como hacerlo, podes ver nuestro proyecto [Sphere MQTT](https://github.com/gotoiot/sphere-mqtt), que se compone de un broker y distintos servicios relacionados que conforman un ecosistema MQTT completo.
 
-> Tener el broker no es estrictamente necesario, ya que podes ejecutar la abrir esta app sin conectarte por MQTT, pero carecería de sentido.
+> Tener el broker no es estrictamente necesario, ya que podes ejecutar la app sin conectarte por MQTT, pero carecería de sentido.
 
 ## Descargar el código
 
 Para descargar el código, lo más conveniente es que realices un `fork` de este proyecto a tu cuenta personal haciendo click en [este link](https://github.com/gotoiot/web-mqtt-client/fork). Una vez que ya tengas el fork a tu cuenta, descargalo con este comando (acordate de poner tu usuario en el link):
 
 ```
-git clone https://github.com/TU_USUARIO/web-mqtt-client.git
+git clone https://github.com/USER/web-mqtt-client.git
 ```
 
 Abrí la carpeta del proyecto desde VS Code cuando descargues el código.
@@ -45,11 +45,11 @@ Si estas usando otro servidor web accedé a la URL correspondiente; y de manera 
 
 Una vez que accedas a la app tenes que configurar los campos para conectarte al broker. Muchos de los campos tienen valores precargados para no tener que escribirlos cada vez. Los únicos que no tienen datos cargados son los de usuario y contraseña. 
 
-Si los datos por defecto te sirven, comenzá presionando `CONNECT` y después `SUBSCRIBE` para suscribirte a todos los topics (`#`). Fijate que en la sección de logs aparecen las acciones que vas realizando. Después una vez que te suscribas a todos los topics presioná el botón `PUBLISH`. Esto va a producir un `echo` del mensaje enviado, y es debido a que estás suscripto a todos los topics.
+Si los datos por defecto te sirven, comenzá presionando `CONNECT` y después `SUBSCRIBE` para suscribirte a todos los topics (`#`). Fijate que en la sección de logs aparecen las acciones que vas realizando. Después, una vez que te suscribas a todos los topics presioná el botón `PUBLISH`. Esto va a producir un `echo` del mensaje enviado, y es debido a que estás suscripto a todos los topics.
 
-Para hacer una prueba más completa podés abrir en otra pestaña una nueva instancia de esta app, entonces desde una te suscribis a topics y desde la otra publicas, así podes ver la comunicación entre dos clientes utilizando el broker. Y si querés probar algo más completo aún, podes correr un cliente MQTT embebido para controlarlo desde el navegador con esta aplicación. En la [App MQTT Connection](https://github.com/gotoiot/app-mqtt-connection) también hay info sobre cómo levantar un cliente MQTT embebido.
+Si queres hacer una prueba más completa podés abrir en otra pestaña una nueva instancia de esta app, entonces desde una te suscribis a topics y desde la otra publicas, así podes ver la comunicación entre dos clientes utilizando el broker. 
 
-Si querés saber cómo se ve la App sin ejecutarla, en esta imagen te mostramos cómo se cargan los datos para comunicarte con el broker para hacer el echo.
+Para que veas la app sin necesidad de ejecutarla, en esta imagen te mostramos cómo se cargan los datos para comunicarte con el broker para hacer el echo.
 
 ![web-mqtt-client-fields-filled](doc/web-mqtt-client-fields-filled.png)
 
