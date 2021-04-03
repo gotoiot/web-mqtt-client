@@ -21,7 +21,7 @@ Corre sobre cualquier navegador actual y está desarrollado en JS, HTML y CSS. L
 
 Para correr este proyecto solo necesitas un navegador moderno, aunque es preferible que lo accedas desde un servidor web. Cualquier servidor es válido, aunque si usas VS Code podes instalar la extensión [Live Server](https://github.com/ritwickdey/vscode-live-server.git) que es un servidor web para desarrollo muy fácil y práctico de utilizar. 
 
-También va a ser necesario que tengas un broker MQTT al cual conectarte. Si no sabes como hacerlo, podes ver nuestro proyecto [Sphere MQTT](https://github.com/gotoiot/sphere-mqtt), que se compone de un broker y distintos servicios relacionados que conforman un ecosistema MQTT completo.
+También va a ser necesario que tengas un broker MQTT al cual conectarte. Si no sabes como hacerlo, podes ver nuestro proyecto [Connection MQTT](https://github.com/gotoiot/connection-mqtt), que se compone de un broker y distintos servicios relacionados que conforman un ecosistema MQTT completo.
 
 > Tener el broker no es estrictamente necesario, ya que podes ejecutar la app sin conectarte por MQTT, pero carecería de sentido.
 
