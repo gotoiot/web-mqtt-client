@@ -47,7 +47,7 @@ Si los datos por defecto te sirven, comenzá presionando `CONNECT` y después `S
 
 ## Información útil 🔍
 
-En esta sección vas a encontrar las información de utilidadpara el proyecto.
+En esta sección vas a encontrar información de utilidad para el proyecto.
 
 ### Realizar pruebas
 
