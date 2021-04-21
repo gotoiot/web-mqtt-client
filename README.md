@@ -13,11 +13,15 @@ Corre sobre cualquier navegador actual y está desarrollado en `JavaScript`, `HT
 
 ## Instalar las dependencias 🔩
 
+<details><summary><b>Mira cómo instalar las dependencias</b></summary><br>
+
 Para correr este proyecto solo necesitas un navegador moderno, aunque es preferible que lo accedas desde un servidor web. Cualquier servidor es válido, aunque si usas [Visual Studio Code](https://code.visualstudio.com/) podes instalar la extensión [Live Server](https://github.com/ritwickdey/vscode-live-server.git), un servidor web para desarrollo muy fácil y práctico de utilizar. 
 
 También va a ser necesario que tengas un broker MQTT al cual conectarte. Si no sabes como hacerlo podes ver nuestro proyecto [Connection MQTT](https://github.com/gotoiot/connection-mqtt), que es un ecosistema MQTT completo.
 
 > Tener el broker no es estrictamente necesario, ya que podes ejecutar la app sin conectarte por MQTT, pero no podrías probar cómo funciona esta aplicación web.
+
+</details>
 
 ## Descargar el código 💾
 
@@ -47,7 +51,9 @@ Si los datos por defecto te sirven, comenzá presionando `CONNECT` y después `S
 
 ## Información útil 🔍
 
-En esta sección vas a encontrar información de utilidad para el proyecto.
+En esta sección vas a encontrar información que te va a servir para tener un mayor contexto.
+
+<details><summary><b>Mira todos los detalles</b></summary>
 
 ### Realizar pruebas
 
@@ -67,25 +73,20 @@ Y en esta otra imagen cómo se van visualizando los logs.
 
 Para las configuraciones de los logs podés setar el numero de líneas que se muestran con el campo `Lines`. El check `Time` imprime la hora mientras que el check `Level` imprime el nivel de loggeo. Si querés pausar la actualización de mensajes en el log chequeá el campo `Pause`. Por último, si querés borrar los mensajes presioná `CLEAR LOG`.
 
+</details>
+
 ## Tecnologías utilizadas 🛠️
 
-Estas son las tecnologías usadas en este proyecto:
+<details><summary><b>Mira la lista de tecnologías usadas en el proyecto</b></summary><br>
 
 * [Material Design](https://material.io/design) - Bibliotecas de estilo responsive para aplicaciones web.
 * [Paho MQTT](https://www.eclipse.org/paho/) - Biblioteca de JavaScript para MQTT que se ejecuta en el lado del cliente.
 
+</details>
 
 ## Contribuir 🖇️
 
 Si estás interesado en el proyecto y te gustaría sumar fuerzas para que siga creciendo y mejorando, podés abrir un hilo de discusión para charlar tus propuestas en [este link](https://github.com/gotoiot/web-mqtt-client/issues/new). Así mismo podés leer el archivo [Contribuir.md](https://github.com/gotoiot/gotoiot-doc/wiki/Contribuir) de nuestra Wiki donde están bien explicados los pasos para que puedas enviarnos pull requests.
-
-## Autores 👥
-
-Las colaboraciones principales fueron realizadas por:
-
-* **[Agustin Bassi](https://github.com/agustinBassi)**: Ideación, puesta en marcha y mantenimiento del proyecto.
-
-También podés mirar todas las personas que han participado en la [lista completa de contribuyentes](https://github.com/web-mqtt-client/contributors).
 
 ## Sobre Goto IoT 📖
 
@@ -105,6 +106,14 @@ Si te gustó este proyecto y quisieras apoyarlo, cualquiera de estas acciones es
 * Sumarte a [nuestra comunidad](https://groups.google.com/g/gotoiot) abierta y dejar un feedback sobre qué te pareció el proyecto.
 * [Seguirnos en twitter](https://github.com/gotoiot/doc/wiki) y dejar algún comentario o like.
 * Compartir este proyecto con otras personas.
+
+## Autores 👥
+
+Las colaboraciones principales fueron realizadas por:
+
+* **[Agustin Bassi](https://github.com/agustinBassi)**: Ideación, puesta en marcha y mantenimiento del proyecto.
+
+También podés mirar todas las personas que han participado en la [lista completa de contribuyentes](https://github.com/web-mqtt-client/contributors).
 
 ## Licencia 📄
 
