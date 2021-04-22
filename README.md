@@ -2,7 +2,7 @@
     <img src="doc/gotoiot-logo.png" alt="logo" title="Goto IoT" align="right" width="60" height="60" />
 </a>
 
-Web MQTT Client
+Web MQTT Client!
 ===============
 
 *Ayudaría mucho si apoyaras este proyecto con una ⭐ en Github!*
