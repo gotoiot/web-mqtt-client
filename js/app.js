@@ -37,6 +37,7 @@ const MQTT_TIMEOUT            = 3;
 const MQTT_TLS_FLAG           = false
 const MQTT_CLEAN_SESSION_FLAG = true;
 const MQTT_RECONNECT_TIMEOUT  = 2000;
+const MQTT_KEEPALIVE_INTERVAL = 30;
 // The object where Paho MQTT instance is
 var MqttClientObj;
 
@@ -131,18 +132,20 @@ function App_ConnectToMqttBroker(){
     // Show current settings
     Mqtt_LogSettings(mqttHost, mqttPort, mqttClient);
     // connection option settings
-    let timeout      = MQTT_TIMEOUT;
-    let useTLS       = MQTT_TLS_FLAG;
-    let cleanSession = MQTT_CLEAN_SESSION_FLAG;
+    let timeout           = MQTT_TIMEOUT;
+    let useTLS            = MQTT_TLS_FLAG;
+    let cleanSession      = MQTT_CLEAN_SESSION_FLAG;
+    let keepAliveInterval = MQTT_KEEPALIVE_INTERVAL;
     // Create the client object from user settings
-    MqttClientObj = new Paho.MQTT.Client(mqttHost, mqttPort, mqttClient);
+    MqttClientObj = new Paho.MQTT.Client(mqttHost, mqttPort, "/ws", mqttClient);
     // Set connection config options
     var mqttOptions = {
-        timeout      : timeout,
-        useSSL       : useTLS,
-        cleanSession : cleanSession,
-        onSuccess    : Mqtt_OnSuccess,
-        onFailure    : Mqtt_OnFailure
+        timeout          : timeout,
+        useSSL           : useTLS,
+        cleanSession     : cleanSession,
+        keepAliveInterval: keepAliveInterval,
+        onSuccess        : Mqtt_OnSuccess,
+        onFailure        : Mqtt_OnFailure
     };
     // Add authentication option if needed
     if ((mqttUser != null || mqttUser != "") && (mqttPass != null || mqttPass != "")){
